@@ -182,7 +182,10 @@
                     "name": "createUser",
                     "slots": [],
                     "samples": [
-                        "create a user"
+                        "create new user",
+                        "create a user",
+                        "create user",
+                        "create a new user"
                     ]
                 },
                 {
@@ -208,11 +211,11 @@
                     ]
                 },
                 {
-                    "name": "checkLogin",
+                    "name": "returningUser",
                     "slots": [],
                     "samples": [
-                        "log in",
-                        "login"
+                        "returning user",
+                        "returning"
                     ]
                 }
             ],
