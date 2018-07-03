@@ -23,7 +23,7 @@ var handlers = {
   'welcome': function() {
     this.handler.state = "_INTRO";
     this.emit(':ask', 'Welcome  to the Study Bar. Please choose from the following options. General information, student '+
-    'services, business services, amenities, and create a user');
+    'services, business services, amenities, log in, or create a user');
   },
   'Unhandled': function () {
     this.emit(':ask',"Sorry, I didn't get that. Try saying: 'student services', 'business services', or 'amenities'");
@@ -70,9 +70,21 @@ var introHandler = Alexa.CreateStateHandler("_INTRO", {
     'standing and seated work stations, a study lounge, chromebooks and ipads, a 3D printer, free wifi, and a free snack '+
     'and beverage bar');
   },
+  'checkLogin': function() {
+    // this.handler.state = "_USER";
+    var firstName;
+    var lastName;
+    if (this.attributes['FirstName'] && this.attributes['LastName']){
+      this.attributes['FirstName'] = firstName;
+      this.ttributes['LastName'] = lastName;
+      this.emit(':tell', `Welcome back ${firstName} ${lastName}`);
+    } else{
+      this.emit(':ask', `Sorry I didn\'t quite get that`, `Tell me your name by saying, my name is: and then your first and last name`);
+    }
+  },
   'createUser': function() {
     this.handler.state = "_USER";
-    this.emit(':ask', 'To create a user, please say: my name is, and then state your first name and last name');
+    this.emit(':ask', 'To create a user, please say: my name is, and then state your first and last name');
   },
    'Unhandled': function () {
     this.emit(':ask',"Sorry, I didn't get that. Try saying: 'student services', 'business services', or 'amenities'");
