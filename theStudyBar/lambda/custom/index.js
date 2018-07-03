@@ -6,6 +6,7 @@ const APP_ID = 'amzn1.ask.skill.0c5c1a8b-7993-4c2b-bf87-53dbcdb34fb1';
 
 var docClient = new AWS.DynamoDB.DocumentClient();
 
+//this is a test for both AWS and git
 
 exports.handler = function(event, context, callback){
   var alexa = Alexa.handler(event, context);
