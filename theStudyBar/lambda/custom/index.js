@@ -1,16 +1,17 @@
 var Alexa = require('alexa-sdk');
 var AWS = require('aws-sdk');
-//AWS.config.update({region: 'us-east-1'});
+AWS.config.update({region: 'us-east-1'});
 
 const APP_ID = 'amzn1.ask.skill.0c5c1a8b-7993-4c2b-bf87-53dbcdb34fb1';
 
-var docClient = new AWS.DynamoDB.DocumentClient();
+var dynamo = new AWS.DynamoDB({apiVersion: '2012-10-08'});
 
 //this is a test for both AWS and git
 
 exports.handler = function(event, context, callback){
   var alexa = Alexa.handler(event, context);
   alexa.dynamoDBTableName = 'StudyBarUsers';
+  //alexa.dynamoDBTableName = 'TimeSheet';
   alexa.appId = APP_ID;
   alexa.registerHandlers(handlers);
   alexa.execute();
@@ -120,7 +121,7 @@ var handlers = {
     //this.handler.state = "_USER";
     this.emit(':ask', 'To create a user, please say: my name is, and then state your first and last name');
   },
-  'dynamo': function() {
+  'userInput': function() {
     var table = 'StudyBarUsers';
     
     var firstNameSlot = this.event.request.intent.slots.firstName.value;
@@ -138,23 +139,30 @@ var handlers = {
       this.attributes['FirstName'] = firstName;
       this.attributes['LastName'] = lastName;
       this.attributes['userId'] = firstName + lastName;
-      this.emit(':tell', `Nice to meet you ${firstName} ${lastName}`);
+      this.emit(':ask', `Nice to meet you ${firstName} ${lastName}. Would you like to learn more about student services, `+
+      `business services, amenities, or general information? To restart, say: start over`);
     } else{
       this.emit(':ask', `Sorry I didn\'t quite get that`, `Tell me your name by saying, my name is: and then your name`);
     }
 
     var params = {
       TableName: table,
-      Item:{
-        userId: firstName + lastName,
-        FirstName: firstName,
-        LastName: lastName
+      Item: {
+        "FirstName": {
+          S: firstName
+        },
+        "LastName": {
+          S: lastName
+        },
+        "userId": {
+          S: firstName + lastName
+        }
       }
     };
 
     console.log(params);
     
-    docClient.put(params, function(err, data){
+   dynamo.putItem(params, function(err, data){
       if (err){
         console.error("Error", err);
       } else{
@@ -162,6 +170,56 @@ var handlers = {
       }
     });
   },
+  'checkIn': function() {
+    var table = 'TimeSheet';
+    
+    var firstNameSlot = this.event.request.intent.slots.firstName.value;
+    var lastNameSlot = this.event.request.intent.slots.lastName.value;
+    
+    var firstName;
+    var lastName;
+    
+    if (firstNameSlot && lastNameSlot){
+      firstName = firstNameSlot;
+      lastName = lastNameSlot;
+    }
+    
+    if (firstName && lastName){
+      this.attributes['FirstName'] = firstName;
+      this.attributes['LastName'] = lastName;
+      this.attributes['userId'] = firstName + lastName;
+      this.emit(':ask', `Nice to meet you ${firstName} ${lastName}. Would you like to learn more about student services, `+
+      `business services, amenities, or general information? To restart, say: start over`);
+    } else{
+      this.emit(':ask', `Sorry I didn\'t quite get that`, `Tell me your name by saying, my name is: and then your name`);
+    }
+
+    var params = {
+      TableName: table,
+      Item: {
+        "FirstName": {
+          S: firstName
+        },
+        "LastName": {
+          S: lastName
+        },
+        "userId": {
+          S: firstName + lastName
+        }
+      }
+    };
+
+    console.log(params);
+    
+   dynamo.putItem(params, function(err, data){
+      if (err){
+        console.error("Error", err);
+      } else{
+        console.log("Success", data.Item);
+      }
+    });
+  },
+
   'Unhandled': function () {
     this.emit(':ask',"Sorry, I didn't get that. Try saying: 'student services', 'business services', or 'amenities'");
   },
@@ -275,7 +333,7 @@ var handlers = {
 
 //     console.log(params);
     
-//     docClient.put(params, function(err, data){
+//     dynamo.put(params, function(err, data){
 //       if (err){
 //         console.error("Error", err);
 //       } else{

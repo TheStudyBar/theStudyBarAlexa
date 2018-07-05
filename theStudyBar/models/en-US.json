@@ -154,7 +154,7 @@
                     ]
                 },
                 {
-                    "name": "dynamo",
+                    "name": "userInput",
                     "slots": [
                         {
                             "name": "firstName",
@@ -217,6 +217,22 @@
                         "returning user",
                         "returning"
                     ]
+                },
+                {
+                    "name": "checkIn",
+                    "slots": [
+                        {
+                            "name": "firstName",
+                            "type": "AMAZON.US_FIRST_NAME"
+                        },
+                        {
+                            "name": "lastName",
+                            "type": "last_names"
+                        }
+                    ],
+                    "samples": [
+                        "I want to check in {firstName} {lastName}"
+                    ]
                 }
             ],
             "types": [
@@ -275,7 +291,7 @@
         "dialog": {
             "intents": [
                 {
-                    "name": "dynamo",
+                    "name": "userInput",
                     "confirmationRequired": false,
                     "prompts": {},
                     "slots": [
