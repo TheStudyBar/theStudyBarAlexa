@@ -112,7 +112,15 @@ var handlers = {
     this.emit(':ask', 'Are you a returning user or would you like to create a new user?')
   },
   'returningUser': function() {
-    this.emit(':ask', 'Welcome back! To sign in, please say: sign in, and then your first and last name');
+    var firstName = this.attributes['FirstName'];
+    var lastName = this.attributes['LastName'];
+
+    if (firstName != undefined && lastName != undefined){
+      this.emit(':tell', `Welcome back ${firstName} ${lastName}`);
+    } else{
+      this.emit(':ask', `Sorry I didn\'t quite get that`, `Tell me your name by saying, my name is: and then your first and last name`);
+    }
+    //this.emit(':ask', 'Welcome back! To sign in, please say: sign in, and then your first and last name');
   },
   'signIn': function() {
     var table = 'StudyBarUsers';
