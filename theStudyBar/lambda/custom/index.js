@@ -121,7 +121,7 @@ var handlers = {
     //this.handler.state = "_USER";
     this.emit(':ask', 'To create a user, please say: my name is, and then state your first and last name');
   },
-  'userInput': function() {
+  'myNameIs': function() {
     var table = 'StudyBarUsers';
     
     var firstNameSlot = this.event.request.intent.slots.firstName.value;

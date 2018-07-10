@@ -154,42 +154,7 @@
                     ]
                 },
                 {
-                    "name": "userInput",
-                    "slots": [
-                        {
-                            "name": "firstName",
-                            "type": "AMAZON.US_FIRST_NAME",
-                            "samples": [
-                                "{firstName}"
-                            ]
-                        },
-                        {
-                            "name": "lastName",
-                            "type": "last_names",
-                            "samples": [
-                                "{lastName}"
-                            ]
-                        }
-                    ],
-                    "samples": [
-                        "my name is {firstName} {lastName}",
-                        "my name is {firstName}",
-                        "i am user {firstName}",
-                        "i am a user"
-                    ]
-                },
-                {
-                    "name": "createUser",
-                    "slots": [],
-                    "samples": [
-                        "create new user",
-                        "create a user",
-                        "create user",
-                        "create a new user"
-                    ]
-                },
-                {
-                    "name": "newSession",
+                    "name": "myNameIs",
                     "slots": [
                         {
                             "name": "firstName",
@@ -208,6 +173,16 @@
                     ],
                     "samples": [
                         "my name is {firstName} {lastName}"
+                    ]
+                },
+                {
+                    "name": "createUser",
+                    "slots": [],
+                    "samples": [
+                        "create new user",
+                        "create a user",
+                        "create user",
+                        "create a new user"
                     ]
                 },
                 {
