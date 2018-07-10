@@ -154,6 +154,14 @@
                     ]
                 },
                 {
+                    "name": "userManagement",
+                    "slots": [],
+                    "samples": [
+                        "user management",
+                        "manage user"
+                    ]
+                },
+                {
                     "name": "myNameIs",
                     "slots": [
                         {
@@ -172,7 +180,8 @@
                         }
                     ],
                     "samples": [
-                        "my name is {firstName} {lastName}"
+                        "my name is {firstName} {lastName}",
+                        "my name is {firstName}"
                     ]
                 },
                 {
@@ -207,6 +216,22 @@
                     ],
                     "samples": [
                         "I want to check in {firstName} {lastName}"
+                    ]
+                },
+                {
+                    "name": "signIn",
+                    "slots": [
+                        {
+                            "name": "firstName",
+                            "type": "AMAZON.US_FIRST_NAME"
+                        },
+                        {
+                            "name": "lastName",
+                            "type": "last_names"
+                        }
+                    ],
+                    "samples": [
+                        "sign in {firstName} {lastName}"
                     ]
                 }
             ],
