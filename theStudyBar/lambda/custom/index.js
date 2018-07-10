@@ -130,12 +130,14 @@ var handlers = {
     var firstName;
     var lastName;
     
-    if (firstNameSlot && lastNameSlot){
+    if (firstNameSlot && lastNameSlot) {
       firstName = firstNameSlot;
       lastName = lastNameSlot;
+    } else {
+      this.emit('ask', 'Sorry, I didn\'t quite get that. Please say: my name is, and then state your first and last name');
     }
     
-    if (firstName && lastName){
+    if (firstName && lastName) {
       this.attributes['FirstName'] = firstName;
       this.attributes['LastName'] = lastName;
       this.attributes['userId'] = firstName + lastName;
