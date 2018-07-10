@@ -266,7 +266,7 @@
         "dialog": {
             "intents": [
                 {
-                    "name": "userInput",
+                    "name": "myNameIs",
                     "confirmationRequired": false,
                     "prompts": {},
                     "slots": [
@@ -286,31 +286,6 @@
                             "elicitationRequired": true,
                             "prompts": {
                                 "elicitation": "Elicit.Slot.785178671168.437177004460"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "newSession",
-                    "confirmationRequired": false,
-                    "prompts": {},
-                    "slots": [
-                        {
-                            "name": "firstName",
-                            "type": "AMAZON.US_FIRST_NAME",
-                            "confirmationRequired": false,
-                            "elicitationRequired": true,
-                            "prompts": {
-                                "elicitation": "Elicit.Slot.605826332731.607919223183"
-                            }
-                        },
-                        {
-                            "name": "lastName",
-                            "type": "last_names",
-                            "confirmationRequired": false,
-                            "elicitationRequired": true,
-                            "prompts": {
-                                "elicitation": "Elicit.Slot.605826332731.508345253837"
                             }
                         }
                     ]
