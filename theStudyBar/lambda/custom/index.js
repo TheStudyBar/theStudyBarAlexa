@@ -13,7 +13,7 @@ exports.handler = function(event, context, callback){
   alexa.dynamoDBTableName = 'StudyBarUsers';
   //alexa.dynamoDBTableName = 'TimeSheet';
   alexa.appId = APP_ID;
-  alexa.registerHandlers(handlers);
+  alexa.registerHandlers(handlers, FirstNameOne, LastNameOne);
   alexa.execute();
 };
 
@@ -24,17 +24,23 @@ var handlers = {
   'welcome': function() {
     //this.handler.state = "_INTRO";
     this.emit(':ask', 'Welcome  to the Study Bar. Please choose from the following options. General information, student '+
-    'services, business services, amenities, or user management');
+    'services, business services, amenities, or user management. For andrew only, say test name');
   },
   'genInfo': function(){
     this.emit(':ask', 'The study bar is an interactive space focused on engaging bright learners through '+
     'real-world experiences, and the academic study needed to reach their potential. Our one-of-a-kind '+
     'approach helps our members better thrive and flourish in their home, work, and school environments. '+
-    'To learn more, say student services, business services, amenities, or user management');
+    'To learn more, say student services, business services, amenities, or user management.');
   },
   'services' : function(){
     this.emit(':ask', 'Do you want to learn about student services or business services?' , 'Say: student services '+
     'or business services');
+  },
+
+  // TEST NAME INPUT
+  'testName': function() {
+    this.handler.state = "_NAME1";
+    this.emit(':ask', 'What is your first name?');
   },
 
   // STUDENT SERVICES
@@ -294,6 +300,26 @@ var handlers = {
     this.emit('welcome');
   }
 };
+
+var FirstNameOne = Alexa.CreateStateHandler("_NAME1", {
+  'firstNameOne': function() {
+    var firstNameSlot = this.event.request.intent.slots.firstName.value;
+    this.attibutes['FirstName'] = firstNameSlot;
+    this.handler.state = "_NAME2";
+    this.emit(':ask', 'What is your last name?');
+  }
+});
+var LastNameOne = Alexa.CreateStateHandler("_NAME2", {
+  'lastNameOne': function() {
+    var lastNameSlot = this.event.request.intent.slots.lastName.value;
+    this.attributes['LastName'] = lastNameSlot;
+    this.emit(':ask', `nice to see you again ${firstNameSlot} ${lastNameSlot}`);
+  }
+});
+
+
+
+
 
 // var introHandler = Alexa.CreateStateHandler("_INTRO", {
 //   'genInfo': function(){

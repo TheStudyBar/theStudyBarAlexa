@@ -29,6 +29,43 @@
                     "samples": []
                 },
                 {
+                    "name": "testName",
+                    "slots": [],
+                    "samples": [
+                        "test name"
+                    ]
+                },
+                {
+                    "name": "firstNameOne",
+                    "slots": [
+                        {
+                            "name": "firstName",
+                            "type": "AMAZON.US_FIRST_NAME",
+                            "samples": [
+                                "{firstName}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "{firstName}"
+                    ]
+                },
+                {
+                    "name": "lastNameOne",
+                    "slots": [
+                        {
+                            "name": "lastName",
+                            "type": "last_names",
+                            "samples": [
+                                "{lastName}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "{lastName}"
+                    ]
+                },
+                {
                     "name": "genInfo",
                     "slots": [],
                     "samples": [
@@ -314,6 +351,38 @@
                             }
                         }
                     ]
+                },
+                {
+                    "name": "firstNameOne",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "firstName",
+                            "type": "AMAZON.US_FIRST_NAME",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.193762016885.1382206999797"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "lastNameOne",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "lastName",
+                            "type": "last_names",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.785178671168.437177004460"
+                            }
+                        }
+                    ]
                 }
             ]
         },
@@ -328,34 +397,7 @@
                 ]
             },
             {
-                "id": "Elicit.Slot.748113661066.224514258639",
-                "variations": [
-                    {
-                        "type": "PlainText",
-                        "value": "What is your last name?"
-                    }
-                ]
-            },
-            {
                 "id": "Elicit.Slot.785178671168.437177004460",
-                "variations": [
-                    {
-                        "type": "PlainText",
-                        "value": "what is your last name?"
-                    }
-                ]
-            },
-            {
-                "id": "Elicit.Slot.605826332731.607919223183",
-                "variations": [
-                    {
-                        "type": "PlainText",
-                        "value": "what is your first name?"
-                    }
-                ]
-            },
-            {
-                "id": "Elicit.Slot.605826332731.508345253837",
                 "variations": [
                     {
                         "type": "PlainText",
