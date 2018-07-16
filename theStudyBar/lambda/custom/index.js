@@ -1,6 +1,6 @@
 var Alexa = require('alexa-sdk');
 var AWS = require('aws-sdk');
-var mysql = require('mysql');
+//var mysql = require('mysql');
 AWS.config.update({region: 'us-east-1'});
 
 const APP_ID = 'amzn1.ask.skill.0c5c1a8b-7993-4c2b-bf87-53dbcdb34fb1';
@@ -39,27 +39,27 @@ var handlers = {
   },
 
   // TEST NAME INPUT
-  'testName': function() {
-    var connection = mysql.createConnection( {
-      host: 'mysql-test.clstjpeu5zis.us-east-1.rds.amazonaws.com',
-      user: 'asenol',
-      password: 'AESwu$t1',
-      database: 'StudyBar'
-    });
-    connection.connect(function(err) {
-      if(err) {
-        console.log('error connecting: ' + err.stack);
-        return;
-      }
-      console.log('connected as id ' +connection.threadId);
-      this.emit(':ask', 'success');
-    });
+  // 'testName': function() {
+  //   var connection = mysql.createConnection( {
+  //     host: 'mysql-test.clstjpeu5zis.us-east-1.rds.amazonaws.com',
+  //     user: 'asenol',
+  //     password: 'AESwu$t1',
+  //     database: 'StudyBar'
+  //   });
+  //   connection.connect(function(err) {
+  //     if(err) {
+  //       console.log('error connecting: ' + err.stack);
+  //       return;
+  //     }
+  //     console.log('connected as id ' +connection.threadId);
+  //     this.emit(':ask', 'success');
+  //   });
 
     
 
     
     
-  },
+  // },
 
   // STUDENT SERVICES
   'studentServices': function(){
