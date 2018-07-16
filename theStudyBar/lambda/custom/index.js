@@ -1,5 +1,6 @@
 var Alexa = require('alexa-sdk');
 var AWS = require('aws-sdk');
+var mysql = require('mysql');
 AWS.config.update({region: 'us-east-1'});
 
 const APP_ID = 'amzn1.ask.skill.0c5c1a8b-7993-4c2b-bf87-53dbcdb34fb1';
@@ -26,21 +27,38 @@ var handlers = {
     this.emit(':ask', 'Welcome  to the Study Bar. Please choose from the following options. General information, student '+
     'services, business services, amenities, or user management. For andrew only, say test name');
   },
-  'genInfo': function(){
+  'genInfo': function() {
     this.emit(':ask', 'The study bar is an interactive space focused on engaging bright learners through '+
     'real-world experiences, and the academic study needed to reach their potential. Our one-of-a-kind '+
     'approach helps our members better thrive and flourish in their home, work, and school environments. '+
     'To learn more, say student services, business services, amenities, or user management.');
   },
-  'services' : function(){
+  'services' : function() {
     this.emit(':ask', 'Do you want to learn about student services or business services?' , 'Say: student services '+
     'or business services');
   },
 
   // TEST NAME INPUT
   'testName': function() {
-    this.handler.state = "_NAME1";
-    this.emit(':ask', 'What is your first name?');
+    var connection = mysql.createConnection( {
+      host: 'mysql-test.clstjpeu5zis.us-east-1.rds.amazonaws.com',
+      user: 'asenol',
+      password: 'AESwu$t1',
+      database: 'StudyBar'
+    });
+    connection.connect(function(err) {
+      if(err) {
+        console.log('error connecting: ' + err.stack);
+        return;
+      }
+      console.log('connected as id ' +connection.threadId);
+      this.emit(':ask', 'success');
+    });
+
+    
+
+    
+    
   },
 
   // STUDENT SERVICES
@@ -225,10 +243,10 @@ var handlers = {
 
     console.log(params);
     
-   dynamo.putItem(params, function(err, data){
-      if (err){
+   dynamo.putItem(params, function(err, data) { 
+      if (err) {
         console.error("Error", err);
-      } else{
+      } else {
         console.log("Success", data.Item);
       }
     });
