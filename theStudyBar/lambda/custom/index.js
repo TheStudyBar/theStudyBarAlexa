@@ -142,7 +142,7 @@ var handlers = {
     if (firstName != undefined && lastName != undefined){
       this.emit(':tell', `Welcome back ${firstName} ${lastName}`);
     } else{
-      this.emit(':ask', `Sorry I didn\'t quite get that`, `Tell me your name by saying, my name is: and then your first and last name`);
+      this.emit(':ask', `Sorry I don\'t remember you. Tell me your name by saying, my name is: and then your first and last name`);
     }
     //this.emit(':ask', 'Welcome back! To sign in, please say: sign in, and then your first and last name');
   },
