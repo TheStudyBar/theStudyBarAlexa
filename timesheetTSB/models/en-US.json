@@ -1,0 +1,58 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "my timesheet",
+      "intents": [
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "singIn",
+          "slots": [
+            {
+              "name": "firstName",
+              "type": "AMAZON.US_FIRST_NAME"
+            },
+            {
+              "name": "lastName",
+              "type": "Last_Names"
+            }
+          ],
+          "samples": [
+            "sign in {firstName} {lastName}"
+          ]
+        }
+      ],
+      "types": [
+        {
+          "values": [
+            {
+              "name": {
+                "value": "stevens"
+              }
+            },
+            {
+              "name": {
+                "value": "johnson"
+              }
+            }
+          ],
+          "name": "Last_Names"
+        }
+      ]
+    }
+  }
+}

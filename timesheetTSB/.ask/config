@@ -1,0 +1,19 @@
+{
+  "deploy_settings": {
+    "default": {
+      "skill_id": "amzn1.ask.skill.c7ac36f4-d092-4db6-9343-724876bcc9ce",
+      "was_cloned": true,
+      "merge": {
+        "manifest": {
+          "apis": {
+            "custom": {
+              "endpoint": {
+                "uri": "arn:aws:lambda:us-east-1:590012317483:function:tsb-timesheet"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
