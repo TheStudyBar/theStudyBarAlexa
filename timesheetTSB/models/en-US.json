@@ -20,19 +20,15 @@
           "samples": []
         },
         {
-          "name": "singIn",
-          "slots": [
-            {
-              "name": "firstName",
-              "type": "AMAZON.US_FIRST_NAME"
-            },
-            {
-              "name": "lastName",
-              "type": "Last_Names"
-            }
-          ],
+          "name": "welcome",
+          "slots": [],
+          "samples": []
+        },
+        {
+          "name": "signIn",
+          "slots": [],
           "samples": [
-            "sign in {firstName} {lastName}"
+            "sign in"
           ]
         }
       ],
