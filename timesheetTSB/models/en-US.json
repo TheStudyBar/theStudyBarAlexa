@@ -26,9 +26,19 @@
         },
         {
           "name": "signIn",
-          "slots": [],
+          "slots": [
+              {
+                  "name": "firstName",
+                  "type": "AMAZON.US_FIRST_NAME"
+              },
+              {
+                  "name": "lastName",
+                  "type": "Last_Names"
+              }
+          ],
           "samples": [
-            "sign in"
+              "sign in {firstName} {lastName}",
+              "sign in"
           ]
         }
       ],
