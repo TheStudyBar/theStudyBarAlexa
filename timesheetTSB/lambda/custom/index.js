@@ -6,7 +6,7 @@ var AWS = require('aws-sdk');
 const APP_ID = 'amzn1.ask.skill.c7ac36f4-d092-4db6-9343-724876bcc9ce';
 
 //var dynamo = new AWS.DynamoDB({ apiVersion: '2012-08-10' });
-var docClient = new AWS.DynamoDB.DocumentClient({apiVersion: '2012-08-10'});
+var docClient = new AWS.DynamoDB.DocumentClient({ apiVersion: '2012-08-10' });
 
 
 exports.handler = function (event, context, callback) {
@@ -26,7 +26,7 @@ var handlers = {
     },
     'signIn': function () {
 
-        var table = 'RecordTime5';
+        var table = 'RecordTime';
 
         var firstNameSlot = this.event.request.intent.slots.firstName.value;
         var lastNameSlot = this.event.request.intent.slots.lastName.value;
@@ -34,13 +34,36 @@ var handlers = {
         var firstName;
         var lastName;
 
-        var datetime = new Date().getTime().toString();
+        // var datetime = new Date().getTime().toString();
 
-        var dateObj = new Date();
-        var month = dateObj.getMonth() + 1; //months from 1-12
-        var day = dateObj.getDate();
-        var year = dateObj.getFullYear();
-        newdate = month + "/" + day + "/" + year;
+        // var dateObj = new Date();
+        // var month = dateObj.getMonth() + 1; //months from 1-12
+        // var day = dateObj.getDate();
+        // var year = dateObj.getFullYear();
+        // newdate = month + "/" + day + "/" + year;
+
+
+        var date = new Date();
+
+        var hour = date.getHours();
+        hour = (hour < 10 ? "0" : "") + hour;
+
+        var min = date.getMinutes();
+        min = (min < 10 ? "0" : "") + min;
+
+        var sec = date.getSeconds();
+        sec = (sec < 10 ? "0" : "") + sec;
+
+        var year = date.getFullYear();
+
+        var month = date.getMonth() + 1;
+        month = (month < 10 ? "0" : "") + month;
+
+        var day = date.getDate();
+        day = (day < 10 ? "0" : "") + day;
+
+        currentDate = month + "/" + day + "/" + year;
+        currentTime = hour + ":" + min + ":" + sec;
 
 
         if (firstNameSlot && lastNameSlot) {
@@ -54,19 +77,21 @@ var handlers = {
             this.attributes['FirstName'] = firstName;
             this.attributes['LastName'] = lastName;
             this.attributes['userId'] = firstName + lastName;
-            this.attributes['date'] = datetime;
+            this.attributes['date'] = currentDate;
+            this.attributes['timeIn'] = currentTime;
             var params = {
-                TableName: 'RecordTime5',
+                TableName: 'RecordTime',
                 Item: {
                     userId: firstName + lastName,
                     FirstName: firstName,
                     LastName: lastName,
-                    date: newdate
+                    date: currentDate,
+                    timeIn: currentTime
                 }
             };
-    
+
             console.log(params);
-    
+
             docClient.put(params, function (err, data) {
                 if (err) {
                     console.error("Error", err);
@@ -78,6 +103,9 @@ var handlers = {
         } else {
             this.emit(':ask', `Sorry I didn\'t quite get that. Sign in by saying "sign in" and then your first and last name`);
         }
+
+
+
         // var params = {
         //     TableName: table,
         //     Item: {
@@ -105,9 +133,9 @@ var handlers = {
         //         console.log("Success", data.Item);
         //     }
         // });
-        
 
-    
+
+
 
     },
     'Unhandled': function () {
