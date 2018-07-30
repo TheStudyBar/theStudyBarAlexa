@@ -27,23 +27,30 @@
         {
           "name": "signIn",
           "slots": [
-              {
-                  "name": "firstName",
-                  "type": "AMAZON.US_FIRST_NAME"
-              },
-              {
-                  "name": "lastName",
-                  "type": "Last_Names"
-              }
+            {
+              "name": "firstName",
+              "type": "AMAZON.US_FIRST_NAME",
+              "samples": [
+                "{firstName}"
+              ]
+            },
+            {
+              "name": "lastName",
+              "type": "Last_Names",
+              "samples": [
+                "{lastName}"
+              ]
+            }
           ],
           "samples": [
-              "sign in {firstName} {lastName}",
-              "sign in"
+            "sign in {firstName} {lastName}",
+            "sign in"
           ]
         }
       ],
       "types": [
         {
+          "name": "Last_Names",
           "values": [
             {
               "name": {
@@ -55,10 +62,58 @@
                 "value": "johnson"
               }
             }
-          ],
-          "name": "Last_Names"
+          ]
         }
       ]
-    }
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "signIn",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "firstName",
+              "type": "AMAZON.US_FIRST_NAME",
+              "confirmationRequired": false,
+              "elicitationRequired": true,
+              "prompts": {
+                "elicitation": "Elicit.Slot.9581379822.1032065675742"
+              }
+            },
+            {
+              "name": "lastName",
+              "type": "Last_Names",
+              "confirmationRequired": false,
+              "elicitationRequired": true,
+              "prompts": {
+                "elicitation": "Elicit.Slot.9581379822.971512756782"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "prompts": [
+      {
+        "id": "Elicit.Slot.9581379822.1032065675742",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "What is your first name?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.9581379822.971512756782",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "What is your last name?"
+          }
+        ]
+      }
+    ]
   }
 }
