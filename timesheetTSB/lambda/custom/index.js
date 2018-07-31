@@ -19,7 +19,7 @@ exports.handler = function (event, context, callback) {
 
 var handlers = {
     'LaunchRequest': function () {
-        this.emit('welcome');
+        this.emit(':responseReady');
     },
     'welcome': function () {
         this.emit(':ask', 'Would you like to sign in or check out?');
@@ -84,7 +84,7 @@ var handlers = {
                     console.log("Success", data);
                 }
             });
-            this.emit(':tell', `Welcome back ${firstName} ${lastName}. Don't forget to sign out when you leave.`);
+            this.emit(':tell', `Welcome back ${firstName}!`);
         } else {
             this.emit(':ask', `Sorry I didn\'t quite get that. Sign in by saying "sign in" and then your first and last name`);
         }
@@ -132,14 +132,14 @@ var handlers = {
             this.attributes['timeOut'] = currentTime;
             var params = {
                 TableName: 'Timesheet',
-                Item: {
-                    userId: firstName + lastName,
-                    FirstName: firstName,
-                    LastName: lastName,
-                    date: currentDate,
-                    timeOut: currentTime
+                Key: {'userId': firstName + lastName},
+                AttributeUpdates: {
+                    'timeOut' : {
+                        Value: currentTime
+                    },
                 }
             };
+            
 
             console.log(params);
 
@@ -150,13 +150,10 @@ var handlers = {
                     console.log("Success", data);
                 }
             });
-            this.emit(':tell', `See you later, ${firstName} ${lastName}. Hope you have a great day!`);
+            this.emit(':tell', `See you later ${firstName}. Have a great day!`);
         } else {
             this.emit(':ask', `Sorry I didn\'t quite get that. Sign in by saying "sign in" and then your first and last name`);
         }
-    },
-    'success': function () {
-        this.emit(':ask', `Welcome back!`);
     },
     'Unhandled': function () {
         this.emit(':ask', 'Sorry. I didn\'t understand. Would you like to sign in, or check out');
