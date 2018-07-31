@@ -46,7 +46,8 @@ var handlers = {
         var date = new Date();
 
         var hour = date.getHours();
-        hour = (hour < 10 ? "0" : "") + hour;
+        curHour = hour - 5;
+        
 
         var min = date.getMinutes();
         min = (min < 10 ? "0" : "") + min;
@@ -63,7 +64,9 @@ var handlers = {
         day = (day < 10 ? "0" : "") + day;
 
         currentDate = month + "/" + day + "/" + year;
-        currentTime = hour + ":" + min + ":" + sec;
+        currentTime = curHour + ":" + min + ":" + sec;
+
+        
 
 
         if (firstNameSlot && lastNameSlot) {

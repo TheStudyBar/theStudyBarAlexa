@@ -24,3 +24,12 @@ var year = dateObj.getFullYear();
 
 newdate = month + "/" + day + "/" + year;
 console.log(newdate);
+
+var date = new Date();
+var hour = date.getHours();
+hour = (hour < 10 ? "0" : "") + hour;
+        console.log(hour);
+
+        var hour = date.getHours();
+        curHour = hour - 5;
+        console.log(curHour);
