@@ -46,6 +46,33 @@
             "sign in {firstName} {lastName}",
             "sign in"
           ]
+        },
+        {
+          "name": "signOut",
+          "slots": [
+            {
+              "name": "firstName",
+              "type": "AMAZON.US_FIRST_NAME",
+              "samples": [
+                "{firstName}"
+              ]
+            },
+            {
+              "name": "lastName",
+              "type": "Last_Names",
+              "samples": [
+                "{lastName}"
+              ]
+            }
+          ],
+          "samples": [
+            "sign out {firstName} {lastName}"
+          ]
+        },
+        {
+          "name": "success",
+          "slots": [],
+          "samples": []
         }
       ],
       "types": [
@@ -92,6 +119,31 @@
               }
             }
           ]
+        },
+        {
+          "name": "signOut",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "firstName",
+              "type": "AMAZON.US_FIRST_NAME",
+              "confirmationRequired": false,
+              "elicitationRequired": true,
+              "prompts": {
+                "elicitation": "Elicit.Slot.491863040408.375943061710"
+              }
+            },
+            {
+              "name": "lastName",
+              "type": "Last_Names",
+              "confirmationRequired": false,
+              "elicitationRequired": true,
+              "prompts": {
+                "elicitation": "Elicit.Slot.491863040408.718263154181"
+              }
+            }
+          ]
         }
       ]
     },
@@ -107,6 +159,24 @@
       },
       {
         "id": "Elicit.Slot.9581379822.971512756782",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "What is your last name?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.491863040408.375943061710",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "What is your first name?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.491863040408.718263154181",
         "variations": [
           {
             "type": "PlainText",
