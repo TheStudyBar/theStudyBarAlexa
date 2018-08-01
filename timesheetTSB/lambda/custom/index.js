@@ -129,7 +129,7 @@ var handlers = {
             this.attributes['LastName'] = lastName;
             this.attributes['userId'] = firstName + lastName;
             this.attributes['date'] = currentDate;
-            this.attributes['timeOut'] = currentTime;
+            // this.attributes['timeOut'] = currentTime;
             var params = {
                 TableName: 'Timesheet',
                 Key: {'userId': firstName + lastName},
