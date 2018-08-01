@@ -19,10 +19,10 @@ exports.handler = function (event, context, callback) {
 
 var handlers = {
     'LaunchRequest': function () {
-        this.emit(':responseReady');
+        this.emit('welcome');
     },
     'welcome': function () {
-        this.emit(':ask', 'Would you like to sign in or check out?');
+        this.emit(':ask', 'Would you like to sign in or sign out?');
     },
     'signIn': function () {
 
@@ -84,7 +84,7 @@ var handlers = {
                     console.log("Success", data);
                 }
             });
-            this.emit(':tell', `Welcome back ${firstName}!`);
+            this.emit(':ask', `Welcome back ${firstName}!`);
         } else {
             this.emit(':ask', `Sorry I didn\'t quite get that. Sign in by saying "sign in" and then your first and last name`);
         }
@@ -150,10 +150,13 @@ var handlers = {
                     console.log("Success", data);
                 }
             });
-            this.emit(':tell', `See you later ${firstName}. Have a great day!`);
+            this.emit(':ask', `See you later ${firstName}!`);
         } else {
-            this.emit(':ask', `Sorry I didn\'t quite get that. Sign in by saying "sign in" and then your first and last name`);
+            this.emit(':ask', `Sorry I didn\'t quite get that. Sign out by saying "sign out" and then your first and last name`);
         }
+    },
+    'logEntries': function () {
+        this.emit('AMAZON.CancelIntent');
     },
     'Unhandled': function () {
         this.emit(':ask', 'Sorry. I didn\'t understand. Would you like to sign in, or check out');

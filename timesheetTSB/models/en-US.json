@@ -44,6 +44,8 @@
           ],
           "samples": [
             "sign in {firstName} {lastName}",
+            "check in {firstName} {lastName}",
+            "check in",
             "sign in"
           ]
         },
@@ -66,13 +68,19 @@
             }
           ],
           "samples": [
-            "sign out {firstName} {lastName}"
+            "sign out {firstName} {lastName}",
+            "sign out",
+            "check out {firstName} {lastName}",
+            "check out"
           ]
         },
         {
-          "name": "success",
+          "name": "logEntries",
           "slots": [],
-          "samples": []
+          "samples": [
+            "log entries",
+            "log times"
+          ]
         }
       ],
       "types": [
