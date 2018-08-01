@@ -1,0 +1,180 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "comforting comebacks",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.YesIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NoIntent",
+                    "samples": []
+                },
+                {
+                    "name": "WelcomeIntent",
+                    "slots": [],
+                    "samples": []
+                },
+                {
+                    "name": "ResponseIntent",
+                    "slots": [
+                        {
+                            "name": "wow",
+                            "type": "wow_responses"
+                        },
+                        {
+                            "name": "hand",
+                            "type": "talk_to_the_hand_responses"
+                        },
+                        {
+                            "name": "sticks",
+                            "type": "sticks_and_stones_responses"
+                        }
+                    ],
+                    "samples": [
+                        "{sticks}",
+                        "{hand}",
+                        "{wow}"
+                    ]
+                },
+                {
+                    "name": "RepeatIntent",
+                    "slots": [],
+                    "samples": [
+                        "repeat"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "talk_to_the_hand_responses",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "one"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "option one"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "talk to hand"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "talk hand"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "talk to my hand"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "talk to the hand"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "wow_responses",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "wow. now i know why everyone says that stuff about you "
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "wow. now i know why they say all that stuff about you"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "two"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "option two"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "wow. now i know why people say stuff about you "
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "wow. now i know why people say mean things about you"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "wow"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "wow. now i know why they say mean stuff about you"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "sticks_and_stones_responses",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "sticks and stones may break my bones, but words can never hurt me"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "sticks and stones can break my bones, but words can never hurt me"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "three"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "option three"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "sticks and stones may break my bones, but words will never hurt me"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "sticks and stones"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

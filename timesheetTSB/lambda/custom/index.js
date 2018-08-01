@@ -11,7 +11,7 @@ var docClient = new AWS.DynamoDB.DocumentClient({ apiVersion: '2012-08-10' });
 
 exports.handler = function (event, context, callback) {
     var alexa = Alexa.handler(event, context);
-    alexa.dynamoDBTableName = 'Timesheet';
+    //alexa.dynamoDBTableName = 'Unclear';
     alexa.appId = APP_ID;
     alexa.registerHandlers(handlers);
     alexa.execute();
@@ -19,20 +19,22 @@ exports.handler = function (event, context, callback) {
 
 var handlers = {
     'LaunchRequest': function () {
-        this.emit('welcome');
+        this.emit(':ask', 'Would you like to sign in or sign out?');
     },
     'welcome': function () {
         this.emit(':ask', 'Would you like to sign in or sign out?');
     },
     'signIn': function () {
 
-        var table = 'Timesheet';
+        var table = 'testDateSort';
 
         var firstNameSlot = this.event.request.intent.slots.firstName.value;
         var lastNameSlot = this.event.request.intent.slots.lastName.value;
 
         var firstName;
         var lastName;
+
+        var randomVal = parseInt((Math.random() * (10000 - 1) + 1), 10); 
 
         var date = new Date();
         var hour = date.getHours();
@@ -64,13 +66,15 @@ var handlers = {
             this.attributes['userId'] = firstName + lastName;
             this.attributes['date'] = currentDate;
             this.attributes['timeIn'] = currentTime;
+            //this.attributes['random'] = randomVal;
             var params = {
-                TableName: 'Timesheet',
+                TableName: 'testDateSort',
                 Item: {
                     userId: firstName + lastName,
+                    //random: randomVal,
+                    date: currentDate,
                     FirstName: firstName,
                     LastName: lastName,
-                    date: currentDate,
                     timeIn: currentTime
                 }
             };
@@ -84,7 +88,7 @@ var handlers = {
                     console.log("Success", data);
                 }
             });
-            this.emit(':ask', `Welcome back ${firstName}!`);
+            this.emit(':tell', `Welcome back ${firstName}!`);
         } else {
             this.emit(':ask', `Sorry I didn\'t quite get that. Sign in by saying "sign in" and then your first and last name`);
         }
@@ -92,7 +96,7 @@ var handlers = {
     },
     'signOut': function () {
 
-        var table = 'Timesheet';
+        var table = 'testDateSort';
 
         var firstNameSlot = this.event.request.intent.slots.firstName.value;
         var lastNameSlot = this.event.request.intent.slots.lastName.value;
@@ -129,10 +133,10 @@ var handlers = {
             this.attributes['LastName'] = lastName;
             this.attributes['userId'] = firstName + lastName;
             this.attributes['date'] = currentDate;
-            // this.attributes['timeOut'] = currentTime;
+            this.attributes['timeOut'] = currentTime;
             var params = {
-                TableName: 'Timesheet',
-                Key: {'userId': firstName + lastName},
+                TableName: 'testDateSort',
+                Key: {'userId': firstName + lastName, 'date': currentDate},
                 AttributeUpdates: {
                     'timeOut' : {
                         Value: currentTime
@@ -150,13 +154,14 @@ var handlers = {
                     console.log("Success", data);
                 }
             });
-            this.emit(':ask', `See you later ${firstName}!`);
+            this.emit(':tell', `See you later ${firstName}!`);
         } else {
             this.emit(':ask', `Sorry I didn\'t quite get that. Sign out by saying "sign out" and then your first and last name`);
         }
     },
+   
     'logEntries': function () {
-        this.emit('AMAZON.CancelIntent');
+        this.emit(':tell', 'Entries have been logged');
     },
     'Unhandled': function () {
         this.emit(':ask', 'Sorry. I didn\'t understand. Would you like to sign in, or check out');
