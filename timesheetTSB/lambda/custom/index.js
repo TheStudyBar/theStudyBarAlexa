@@ -1,17 +1,17 @@
 var Alexa = require('alexa-sdk');
 var AWS = require('aws-sdk');
+//var DOC = require('dynamodb-doc');
 
-//AWS.config.update({ region: 'us-east-1' });
+AWS.config.update({ region: 'us-east-1' });
 
 const APP_ID = 'amzn1.ask.skill.c7ac36f4-d092-4db6-9343-724876bcc9ce';
 
-//var dynamo = new AWS.DynamoDB({ apiVersion: '2012-08-10' });
-var docClient = new AWS.DynamoDB.DocumentClient({ apiVersion: '2012-08-10' });
-
+var dynamo = new AWS.DynamoDB();
+var docClient = new AWS.DynamoDB.DocumentClient();
 
 exports.handler = function (event, context, callback) {
     var alexa = Alexa.handler(event, context);
-    //alexa.dynamoDBTableName = 'Unclear';
+    alexa.dynamoDBTableName = 'dummy';
     alexa.appId = APP_ID;
     alexa.registerHandlers(handlers);
     alexa.execute();
@@ -26,7 +26,7 @@ var handlers = {
     },
     'signIn': function () {
 
-        var table = 'testDateSort';
+        var table = 'TSBtimesheet';
 
         var firstNameSlot = this.event.request.intent.slots.firstName.value;
         var lastNameSlot = this.event.request.intent.slots.lastName.value;
@@ -34,7 +34,6 @@ var handlers = {
         var firstName;
         var lastName;
 
-        var randomVal = parseInt((Math.random() * (10000 - 1) + 1), 10); 
 
         var date = new Date();
         var hour = date.getHours();
@@ -67,25 +66,35 @@ var handlers = {
             this.attributes['date'] = currentDate;
             this.attributes['timeIn'] = currentTime;
             //this.attributes['random'] = randomVal;
+
             var params = {
-                TableName: 'testDateSort',
+                TableName: 'TSBtimesheet',
                 Item: {
-                    userId: firstName + lastName,
-                    //random: randomVal,
-                    date: currentDate,
-                    FirstName: firstName,
-                    LastName: lastName,
-                    timeIn: currentTime
+                    'userId': {
+                        S: firstName + lastName
+                    },
+                    'date': {
+                        S: currentDate
+                    },
+                    'FirstName': {
+                        S: firstName
+                    },
+                    'LastName': {
+                        S: lastName
+                    },
+                    'timeIn': {
+                        S: currentTime
+                    }
                 }
             };
 
             console.log(params);
 
-            docClient.put(params, function (err, data) {
+            dynamo.putItem(params, function (err, data) {
                 if (err) {
-                    console.error("Error", err);
+                    console.log("Error", err);
                 } else {
-                    console.log("Success", data);
+                    console.log("Success", data.Item);
                 }
             });
             this.emit(':tell', `Welcome back ${firstName}!`);
@@ -96,7 +105,7 @@ var handlers = {
     },
     'signOut': function () {
 
-        var table = 'testDateSort';
+        var table = 'TSBtimesheet';
 
         var firstNameSlot = this.event.request.intent.slots.firstName.value;
         var lastNameSlot = this.event.request.intent.slots.lastName.value;
@@ -135,7 +144,7 @@ var handlers = {
             this.attributes['date'] = currentDate;
             this.attributes['timeOut'] = currentTime;
             var params = {
-                TableName: 'testDateSort',
+                TableName: 'TSBtimesheet',
                 Key: {'userId': firstName + lastName, 'date': currentDate},
                 AttributeUpdates: {
                     'timeOut' : {
@@ -149,7 +158,7 @@ var handlers = {
 
             docClient.update(params, function (err, data) {
                 if (err) {
-                    console.error("Error", err);
+                    console.log("Error", err);
                 } else {
                     console.log("Success", data);
                 }
