@@ -19,7 +19,7 @@ exports.handler = function (event, context, callback) {
 
 var handlers = {
     'LaunchRequest': function () {
-        this.emit(':ask', 'Would you like to sign in or sign out?');
+        this.emit('welcome');
     },
     'welcome': function () {
         this.emit(':ask', 'Would you like to sign in or sign out?');
