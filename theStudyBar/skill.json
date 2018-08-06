@@ -12,7 +12,27 @@
         "endpoint": {
           "sourceDir": "lambda/custom"
         },
-        "interfaces": []
+        "interfaces": [
+          {
+            "type": "ListTemplate2",
+            "token": "Homescreen",
+            "backButton": "VISIBLE",
+            "backgroundImage": "Image",
+            "title": "The Study Bar",
+            "listItems": [
+              {
+                "token": "Student Services",
+                "image": "Image",
+                "textContent": "We help students!"
+              },
+              {
+                "token": "Business Services",
+                "image": "Image",
+                "textContent": "We help businesses!"
+              }
+            ]
+          }
+        ]
       }
     },
     "manifestVersion": "1.0"

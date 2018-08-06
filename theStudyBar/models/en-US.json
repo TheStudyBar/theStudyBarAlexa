@@ -1,410 +1,433 @@
 {
-    "interactionModel": {
-        "languageModel": {
-            "invocationName": "the study bar",
-            "intents": [
-                {
-                    "name": "AMAZON.FallbackIntent",
-                    "samples": []
-                },
-                {
-                    "name": "AMAZON.CancelIntent",
-                    "samples": []
-                },
-                {
-                    "name": "AMAZON.HelpIntent",
-                    "samples": []
-                },
-                {
-                    "name": "AMAZON.StopIntent",
-                    "samples": []
-                },
-                {
-                    "name": "AMAZON.StartOverIntent",
-                    "samples": []
-                },
-                {
-                    "name": "welcome",
-                    "slots": [],
-                    "samples": []
-                },
-                {
-                    "name": "testName",
-                    "slots": [],
-                    "samples": [
-                        "test name"
-                    ]
-                },
-                {
-                    "name": "firstNameOne",
-                    "slots": [
-                        {
-                            "name": "firstName",
-                            "type": "AMAZON.US_FIRST_NAME",
-                            "samples": [
-                                "{firstName}"
-                            ]
-                        }
-                    ],
-                    "samples": [
-                        "{firstName}"
-                    ]
-                },
-                {
-                    "name": "lastNameOne",
-                    "slots": [
-                        {
-                            "name": "lastName",
-                            "type": "last_names",
-                            "samples": [
-                                "{lastName}"
-                            ]
-                        }
-                    ],
-                    "samples": [
-                        "{lastName}"
-                    ]
-                },
-                {
-                    "name": "genInfo",
-                    "slots": [],
-                    "samples": [
-                        "about",
-                        "general info",
-                        "info",
-                        "information",
-                        "general information"
-                    ]
-                },
-                {
-                    "name": "services",
-                    "slots": [],
-                    "samples": [
-                        "services"
-                    ]
-                },
-                {
-                    "name": "studentServices",
-                    "slots": [],
-                    "samples": [
-                        "student services",
-                        "student"
-                    ]
-                },
-                {
-                    "name": "peerGuidedStudy",
-                    "slots": [],
-                    "samples": [
-                        "peer guided study",
-                        "guided studying",
-                        "guiding peers",
-                        "guided study",
-                        "peer studying",
-                        "peer study",
-                        "peer guided",
-                        "peer"
-                    ]
-                },
-                {
-                    "name": "tutoring",
-                    "slots": [],
-                    "samples": [
-                        "some tutoring",
-                        "tutor",
-                        "tutoring services",
-                        "tutoring service",
-                        "a tutor",
-                        "tutoring"
-                    ]
-                },
-                {
-                    "name": "learnToCode",
-                    "slots": [],
-                    "samples": [
-                        "code",
-                        "learn code",
-                        "learning coding",
-                        "learning to code",
-                        "learn coding",
-                        "coding",
-                        "learn to code"
-                    ]
-                },
-                {
-                    "name": "internships",
-                    "slots": [],
-                    "samples": [
-                        "some interning",
-                        "an intern",
-                        "applying to become an intern",
-                        "becoming an intern",
-                        "interning",
-                        "internships",
-                        "internship"
-                    ]
-                },
-                {
-                    "name": "businessServices",
-                    "slots": [],
-                    "samples": [
-                        "business services",
-                        "business"
-                    ]
-                },
-                {
-                    "name": "reserveSpace",
-                    "slots": [],
-                    "samples": [
-                        "reserving space",
-                        "reserve space",
-                        "reserving",
-                        "reserving a space",
-                        "reserve a space"
-                    ]
-                },
-                {
-                    "name": "facilitation",
-                    "slots": [],
-                    "samples": [
-                        "facilitation"
-                    ]
-                },
-                {
-                    "name": "workshops",
-                    "slots": [],
-                    "samples": [
-                        "workshops"
-                    ]
-                },
-                {
-                    "name": "softwareDevelopment",
-                    "slots": [],
-                    "samples": [
-                        "software development"
-                    ]
-                },
-                {
-                    "name": "amenities",
-                    "slots": [],
-                    "samples": [
-                        "amenities"
-                    ]
-                },
-                {
-                    "name": "userManagement",
-                    "slots": [],
-                    "samples": [
-                        "user management",
-                        "manage user"
-                    ]
-                },
-                {
-                    "name": "myNameIs",
-                    "slots": [
-                        {
-                            "name": "firstName",
-                            "type": "AMAZON.US_FIRST_NAME",
-                            "samples": [
-                                "{firstName}"
-                            ]
-                        },
-                        {
-                            "name": "lastName",
-                            "type": "last_names",
-                            "samples": [
-                                "{lastName}"
-                            ]
-                        }
-                    ],
-                    "samples": [
-                        "my name is {firstName} {lastName}",
-                        "my name is {firstName}"
-                    ]
-                },
-                {
-                    "name": "createUser",
-                    "slots": [],
-                    "samples": [
-                        "create new user",
-                        "create a user",
-                        "create user",
-                        "create a new user"
-                    ]
-                },
-                {
-                    "name": "returningUser",
-                    "slots": [],
-                    "samples": [
-                        "returning user",
-                        "returning"
-                    ]
-                },
-                {
-                    "name": "checkIn",
-                    "slots": [
-                        {
-                            "name": "firstName",
-                            "type": "AMAZON.US_FIRST_NAME"
-                        },
-                        {
-                            "name": "lastName",
-                            "type": "last_names"
-                        }
-                    ],
-                    "samples": [
-                        "I want to check in {firstName} {lastName}"
-                    ]
-                },
-                {
-                    "name": "signIn",
-                    "slots": [
-                        {
-                            "name": "firstName",
-                            "type": "AMAZON.US_FIRST_NAME"
-                        },
-                        {
-                            "name": "lastName",
-                            "type": "last_names"
-                        }
-                    ],
-                    "samples": [
-                        "sign in {firstName} {lastName}"
-                    ]
-                }
-            ],
-            "types": [
-                {
-                    "name": "homework_values",
-                    "values": [
-                        {
-                            "name": {
-                                "value": "work"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "homework management"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "homework"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "last_names",
-                    "values": [
-                        {
-                            "name": {
-                                "value": "obama"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "sessions"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "senol"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "johnson"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "smith"
-                            }
-                        }
-                    ]
-                }
-            ]
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "the study bar",
+      "intents": [
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
         },
-        "dialog": {
-            "intents": [
-                {
-                    "name": "myNameIs",
-                    "confirmationRequired": false,
-                    "prompts": {},
-                    "slots": [
-                        {
-                            "name": "firstName",
-                            "type": "AMAZON.US_FIRST_NAME",
-                            "confirmationRequired": false,
-                            "elicitationRequired": true,
-                            "prompts": {
-                                "elicitation": "Elicit.Slot.193762016885.1382206999797"
-                            }
-                        },
-                        {
-                            "name": "lastName",
-                            "type": "last_names",
-                            "confirmationRequired": false,
-                            "elicitationRequired": true,
-                            "prompts": {
-                                "elicitation": "Elicit.Slot.785178671168.437177004460"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "firstNameOne",
-                    "confirmationRequired": false,
-                    "prompts": {},
-                    "slots": [
-                        {
-                            "name": "firstName",
-                            "type": "AMAZON.US_FIRST_NAME",
-                            "confirmationRequired": false,
-                            "elicitationRequired": true,
-                            "prompts": {
-                                "elicitation": "Elicit.Slot.193762016885.1382206999797"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "lastNameOne",
-                    "confirmationRequired": false,
-                    "prompts": {},
-                    "slots": [
-                        {
-                            "name": "lastName",
-                            "type": "last_names",
-                            "confirmationRequired": false,
-                            "elicitationRequired": true,
-                            "prompts": {
-                                "elicitation": "Elicit.Slot.785178671168.437177004460"
-                            }
-                        }
-                    ]
-                }
-            ]
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
         },
-        "prompts": [
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StartOverIntent",
+          "samples": []
+        },
+        {
+          "name": "welcome",
+          "samples": []
+        },
+        {
+          "name": "testName",
+          "samples": [
+            "test name"
+          ]
+        },
+        {
+          "name": "firstNameOne",
+          "slots": [
             {
-                "id": "Elicit.Slot.193762016885.1382206999797",
-                "variations": [
-                    {
-                        "type": "PlainText",
-                        "value": "What is your first name?"
-                    }
-                ]
+              "name": "firstName",
+              "type": "AMAZON.US_FIRST_NAME",
+              "samples": [
+                "{firstName}"
+              ]
+            }
+          ],
+          "samples": [
+            "{firstName}"
+          ]
+        },
+        {
+          "name": "lastNameOne",
+          "slots": [
+            {
+              "name": "lastName",
+              "type": "last_names",
+              "samples": [
+                "{lastName}"
+              ]
+            }
+          ],
+          "samples": [
+            "{lastName}"
+          ]
+        },
+        {
+          "name": "genInfo",
+          "samples": [
+            "about",
+            "general info",
+            "info",
+            "information",
+            "general information"
+          ]
+        },
+        {
+          "name": "services",
+          "samples": [
+            "services"
+          ]
+        },
+        {
+          "name": "studentServices",
+          "samples": [
+            "student services",
+            "student"
+          ]
+        },
+        {
+          "name": "peerGuidedStudy",
+          "samples": [
+            "peer guided study",
+            "guided studying",
+            "guiding peers",
+            "guided study",
+            "peer studying",
+            "peer study",
+            "peer guided",
+            "peer"
+          ]
+        },
+        {
+          "name": "tutoring",
+          "samples": [
+            "some tutoring",
+            "tutor",
+            "tutoring services",
+            "tutoring service",
+            "a tutor",
+            "tutoring"
+          ]
+        },
+        {
+          "name": "learnToCode",
+          "samples": [
+            "code",
+            "learn code",
+            "learning coding",
+            "learning to code",
+            "learn coding",
+            "coding",
+            "learn to code"
+          ]
+        },
+        {
+          "name": "internships",
+          "samples": [
+            "some interning",
+            "an intern",
+            "applying to become an intern",
+            "becoming an intern",
+            "interning",
+            "internships",
+            "internship"
+          ]
+        },
+        {
+          "name": "businessServices",
+          "samples": [
+            "business services",
+            "business"
+          ]
+        },
+        {
+          "name": "reserveSpace",
+          "samples": [
+            "reserving space",
+            "reserve space",
+            "reserving",
+            "reserving a space",
+            "reserve a space"
+          ]
+        },
+        {
+          "name": "facilitation",
+          "samples": [
+            "facilitation"
+          ]
+        },
+        {
+          "name": "workshops",
+          "samples": [
+            "workshops"
+          ]
+        },
+        {
+          "name": "softwareDevelopment",
+          "samples": [
+            "software development"
+          ]
+        },
+        {
+          "name": "amenities",
+          "samples": [
+            "amenities"
+          ]
+        },
+        {
+          "name": "userManagement",
+          "samples": [
+            "user management",
+            "manage user"
+          ]
+        },
+        {
+          "name": "myNameIs",
+          "slots": [
+            {
+              "name": "firstName",
+              "type": "AMAZON.US_FIRST_NAME",
+              "samples": [
+                "{firstName}"
+              ]
             },
             {
-                "id": "Elicit.Slot.785178671168.437177004460",
-                "variations": [
-                    {
-                        "type": "PlainText",
-                        "value": "what is your last name?"
-                    }
-                ]
+              "name": "lastName",
+              "type": "last_names",
+              "samples": [
+                "{lastName}"
+              ]
             }
+          ],
+          "samples": [
+            "my name is {firstName} {lastName}",
+            "my name is {firstName}"
+          ]
+        },
+        {
+          "name": "createUser",
+          "samples": [
+            "create new user",
+            "create a user",
+            "create user",
+            "create a new user"
+          ]
+        },
+        {
+          "name": "returningUser",
+          "samples": [
+            "returning user",
+            "returning"
+          ]
+        },
+        {
+          "name": "checkIn",
+          "slots": [
+            {
+              "name": "firstName",
+              "type": "AMAZON.US_FIRST_NAME"
+            },
+            {
+              "name": "lastName",
+              "type": "last_names"
+            }
+          ],
+          "samples": [
+            "I want to check in {firstName} {lastName}"
+          ]
+        },
+        {
+          "name": "signIn",
+          "slots": [
+            {
+              "name": "firstName",
+              "type": "AMAZON.US_FIRST_NAME"
+            },
+            {
+              "name": "lastName",
+              "type": "last_names"
+            }
+          ],
+          "samples": [
+            "sign in {firstName} {lastName}"
+          ]
+        },
+        {
+          "name": "AMAZON.MoreIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateSettingsIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NextIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.PageUpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.PageDownIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.PreviousIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.ScrollRightIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.ScrollDownIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.ScrollLeftIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.ScrollUpIntent",
+          "samples": []
+        }
+      ],
+      "types": [
+        {
+          "values": [
+            {
+              "name": {
+                "value": "work"
+              }
+            },
+            {
+              "name": {
+                "value": "homework management"
+              }
+            },
+            {
+              "name": {
+                "value": "homework"
+              }
+            }
+          ],
+          "name": "homework_values"
+        },
+        {
+          "values": [
+            {
+              "name": {
+                "value": "obama"
+              }
+            },
+            {
+              "name": {
+                "value": "sessions"
+              }
+            },
+            {
+              "name": {
+                "value": "senol"
+              }
+            },
+            {
+              "name": {
+                "value": "johnson"
+              }
+            },
+            {
+              "name": {
+                "value": "smith"
+              }
+            }
+          ],
+          "name": "last_names"
+        }
+      ]
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "myNameIs",
+          "confirmationRequired": false,
+          "slots": [
+            {
+              "name": "firstName",
+              "type": "AMAZON.US_FIRST_NAME",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.193762016885.1382206999797"
+              }
+            },
+            {
+              "name": "lastName",
+              "type": "last_names",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.785178671168.437177004460"
+              }
+            }
+          ]
+        },
+        {
+          "name": "firstNameOne",
+          "confirmationRequired": false,
+          "slots": [
+            {
+              "name": "firstName",
+              "type": "AMAZON.US_FIRST_NAME",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.193762016885.1382206999797"
+              }
+            }
+          ]
+        },
+        {
+          "name": "lastNameOne",
+          "confirmationRequired": false,
+          "slots": [
+            {
+              "name": "lastName",
+              "type": "last_names",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.785178671168.437177004460"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "prompts": [
+      {
+        "id": "Elicit.Slot.193762016885.1382206999797",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "What is your first name?"
+          }
         ]
-    }
+      },
+      {
+        "id": "Elicit.Slot.785178671168.437177004460",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "what is your last name?"
+          }
+        ]
+      }
+    ]
+  }
 }
