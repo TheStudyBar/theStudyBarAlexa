@@ -12,6 +12,8 @@ exports.handler = function(event, context, callback){
   alexa.execute();
 };
 
+//comment 
+
 var handlers = {
   'LaunchRequest': function () {
     this.emit('welcome');
