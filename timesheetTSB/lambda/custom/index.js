@@ -33,11 +33,13 @@ var handlers = {
 
         var firstName;
         var lastName;
+        var currentDate;
+        var currentTime;
 
 
         var date = new Date();
         var hour = date.getHours();
-        curHour = hour - 5;
+        var curHour = hour - 5;
         var min = date.getMinutes();
         min = (min < 10 ? "0" : "") + min;
         var sec = date.getSeconds();
