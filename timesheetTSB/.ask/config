@@ -15,6 +15,11 @@
         }
       },
       "in_skill_products": []
+    },
+    "tsb-skill-developer": {
+      "skill_id": "",
+      "was_cloned": false,
+      "merge": {}
     }
   }
 }

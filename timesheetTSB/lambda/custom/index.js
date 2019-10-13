@@ -4,7 +4,7 @@ var AWS = require('aws-sdk');
 
 AWS.config.update({ region: 'us-east-1' });
 
-const APP_ID = 'amzn1.ask.skill.c7ac36f4-d092-4db6-9343-724876bcc9ce';
+const APP_ID = 'amzn1.ask.skill.914bfa13-193e-4bfc-82bf-4d6ef6f54654';
 
 var dynamo = new AWS.DynamoDB();
 var docClient = new AWS.DynamoDB.DocumentClient();
@@ -117,7 +117,7 @@ var handlers = {
 
         var date = new Date();
         var hour = date.getHours();
-        curHour = hour - 5;
+        var curHour = hour - 5;
         var min = date.getMinutes();
         min = (min < 10 ? "0" : "") + min;
         var sec = date.getSeconds();
@@ -128,8 +128,8 @@ var handlers = {
         var day = date.getDate();
         day = (day < 10 ? "0" : "") + day;
 
-        currentDate = month + "/" + day + "/" + year;
-        currentTime = curHour + ":" + min + ":" + sec;
+        var currentDate = month + "/" + day + "/" + year;
+        var currentTime = curHour + ":" + min + ":" + sec;
 
 
         if (firstNameSlot && lastNameSlot) {
